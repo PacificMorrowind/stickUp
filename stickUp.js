@@ -2,6 +2,7 @@
 /*jslint plusplus: true */
 /*global jQuery */
 (function ($) {
+    'use strict';
     $(document).ready(function(){
         var contentButton = [];
         var contentTop = [];
