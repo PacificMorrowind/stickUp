@@ -58,10 +58,6 @@
                 }
                 menuSize = $('.'+itemClass).size();
             }
-            stickyHeight = parseInt($(this).height());
-            stickyMarginB = parseInt($(this).css('margin-bottom'));
-            currentMarginT = parseInt($(this).next().closest('div').css('margin-top'));
-            vartop = parseInt($(this).offset().top);
             //$(this).find('*').removeClass(itemHover);
         }
         $(document).on('scroll', function() {
@@ -75,6 +71,10 @@
                     if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
                         $('.'+itemClass).removeClass(itemHover);
                         $('.'+itemClass+':eq('+i+')').addClass(itemHover);
+            stickyHeight = parseInt($(this).height(), 10);
+            stickyMarginB = parseInt($(this).css('margin-bottom'), 10);
+            currentMarginT = parseInt($(this).next().closest('div').css('margin-top'), 10);
+            vartop = parseInt($(this).offset().top, 10);
             originalCSS =  {
                 "position" : $('.stuckMenu').css('position'),
                // "width" : $('.stuckMenu').css('width'),
