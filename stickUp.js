@@ -29,16 +29,9 @@
             // adding a class to users div
             $(this).addClass('stuckMenu');
             //getting options
-            var objn = 0;
             if(options != null) {
-                for(var o in options.parts) {
-                    if (options.parts.hasOwnProperty(o)){
-                        content[objn] = options.parts[objn];
-                        objn++;
                     }
                 }
-                if(objn == 0) {
-                    console.log('error:needs arguments');
                 }
 
                 itemClass = options.itemClass;
