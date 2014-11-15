@@ -3,20 +3,23 @@
 /*global jQuery */
 (function ($) {
     'use strict';
-    $(document).ready(function(){
-        var contentButton = [];
-        var contentTop = [];
-        var content = [];
-        var lastScrollTop = 0;
-        var scrollDir = '';
-        var itemClass = '';
-        var itemHover = '';
-        var menuSize = null;
-        var stickyHeight = 0;
-        var stickyMarginB = 0;
-        var currentMarginT = 0;
-        var topMargin = 0;
+    $(document).ready(function () {
         $(window).scroll(function(event){
+        var contentTop = [],
+            content = [],
+            lastScrollTop = 0,
+            scrollDir = '',
+            itemClass = '',
+            itemHover = '',
+            menuSize = null,
+            stickyHeight = 0,
+            stickyMarginB = 0,
+            currentMarginT = 0,
+            topMargin = 0,
+            topPadding = 0,
+            topPaddingElement,
+            vartop,
+            originalCSS;
             var st = $(this).scrollTop();
             if (st > lastScrollTop){
                 scrollDir = 'down';
