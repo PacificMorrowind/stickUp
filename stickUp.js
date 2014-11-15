@@ -28,7 +28,7 @@
             }
             lastScrollTop = st;
         });
-        $.fn.stickUp = function( options ) {
+        $.fn.stickUp = function (options) {
             // adding a class to users div
             $(this).addClass('stuckMenu');
             //getting options
@@ -69,16 +69,6 @@
                 for(var i=0;i < menuSize;i++)
                 {
                     contentTop[i] = $('#'+content[i]+'').offset().top;
-                    function bottomView(i) {
-                        contentView = $('#'+content[i]+'').height()*.4;
-                        testView = contentTop[i] - contentView;
-                        //console.log(varscroll);
-                        if(varscroll > testView){
-                            $('.'+itemClass).removeClass(itemHover);
-                            $('.'+itemClass+':eq('+i+')').addClass(itemHover);
-                        } else if(varscroll < 50){
-                            $('.'+itemClass).removeClass(itemHover);
-                            $('.'+itemClass+':eq(0)').addClass(itemHover);
                         }
                     }
                     if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
@@ -92,9 +82,20 @@
                 "padding-top" : $('.stuckMenu').css('padding-top'),
                 "margin-top" : $('.stuckMenu').css('margin-top')
             };
+        function bottomView(i, varscroll) {
+            var contentView = $('#' + content[i]).height() * 0.4,
+                testView = contentTop[i] - contentView;
+            if (varscroll > testView) {
+                $('.' + itemClass).removeClass(itemHover);
+                $('.' + itemClass + ':eq(' + i + ')').addClass(itemHover);
+            } else if (varscroll < 50) {
+                $('.' + itemClass).removeClass(itemHover);
+                $('.' + itemClass + ':eq(0)').addClass(itemHover);
+            }
+        }
                     }
-                    if(scrollDir == 'up') {
-                        bottomView(i);
+                    if (scrollDir === 'up') {
+                        bottomView(i, varscroll);
                     }
                 }
             }
@@ -112,7 +113,7 @@
                 }, 10, function(){
 
                 });
-            };
+            }
 
             if(varscroll + topMargin < vartop){
                 $('.stuckMenu').removeClass('isStuck');
