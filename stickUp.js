@@ -1,3 +1,6 @@
+/*jslint browser: true */
+/*jslint plusplus: true */
+/*global jQuery */
 jQuery(
 function($) {
     $(document).ready(function(){
