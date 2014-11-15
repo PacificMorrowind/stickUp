@@ -4,7 +4,6 @@
 (function ($) {
     'use strict';
     $(document).ready(function () {
-        $(window).scroll(function(event){
         var contentTop = [],
             content = [],
             lastScrollTop = 0,
@@ -20,8 +19,9 @@
             topPaddingElement,
             vartop,
             originalCSS;
+        $(window).scroll(function () {
             var st = $(this).scrollTop();
-            if (st > lastScrollTop){
+            if (st > lastScrollTop) {
                 scrollDir = 'down';
             } else {
                 scrollDir = 'up';
