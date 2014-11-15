@@ -1,8 +1,7 @@
 /*jslint browser: true */
 /*jslint plusplus: true */
 /*global jQuery */
-jQuery(
-function($) {
+(function ($) {
     $(document).ready(function(){
         var contentButton = [];
         var contentTop = [];
@@ -120,5 +119,4 @@ function($) {
 
         });
     });
-
-});
+}(jQuery));
