@@ -84,6 +84,14 @@
                     if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
                         $('.'+itemClass).removeClass(itemHover);
                         $('.'+itemClass+':eq('+i+')').addClass(itemHover);
+            originalCSS =  {
+                "position" : $('.stuckMenu').css('position'),
+               // "width" : $('.stuckMenu').css('width'),
+                "z-index" : $('.stuckMenu').css('z-index'),
+                "top" : $('.stuckMenu').css('top'),
+                "padding-top" : $('.stuckMenu').css('padding-top'),
+                "margin-top" : $('.stuckMenu').css('margin-top')
+            };
                     }
                     if(scrollDir == 'up') {
                         bottomView(i);
@@ -111,9 +119,8 @@
                 $('.stuckMenu').next().closest('div').css({
                     'margin-top': currentMarginT + 'px'
                 }, 10);
-                $('.stuckMenu').css("position","relative");
-            };
-
+                $('.stuckMenu').css(originalCSS);
+            }
         });
     });
 }(jQuery));
