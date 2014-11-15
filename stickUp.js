@@ -31,14 +31,15 @@
         $.fn.stickUp = function (options) {
             // adding a class to users div
             $(this).addClass('stuckMenu');
-            //getting options
-            if(options != null) {
-                    }
+            //get options
+            if (options) {
+                if (options.itemClass) {
+                    itemClass = options.itemClass;
+                    menuSize = $('.' + itemClass).size();
                 }
+                if (options.itemHover) {
+                    itemHover = options.itemHover;
                 }
-
-                itemClass = options.itemClass;
-                itemHover = options.itemHover;
                 if(options.topMargin != null) {
                     if(options.topMargin == 'auto') {
                         topMargin = parseInt($('.stuckMenu').css('margin-top'));
