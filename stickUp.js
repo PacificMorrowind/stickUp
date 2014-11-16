@@ -28,6 +28,11 @@
             }
             lastScrollTop = st;
         });
+        $(window).resize(function () {
+            if (topPaddingElement) {
+                topPadding = topPaddingElement.height() + 5;
+            }
+        });
         $.fn.stickUp = function (options) {
             // adding a class to users div
             $(this).addClass('stuckMenu');
@@ -78,6 +83,10 @@
                     if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
                         $('.'+itemClass).removeClass(itemHover);
                         $('.'+itemClass+':eq('+i+')').addClass(itemHover);
+                if (options.topPaddingElement) {
+                    topPaddingElement = options.topPaddingElement;
+                    topPadding = topPaddingElement.height() + 5;
+                }
             stickyHeight = parseInt($(this).height(), 10);
             stickyMarginB = parseInt($(this).css('margin-bottom'), 10);
             currentMarginT = parseInt($(this).next().closest('div').css('margin-top'), 10);
