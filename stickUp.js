@@ -68,25 +68,14 @@
                             topPadding = parseInt(options.topPadding, 10);
                         } else {
                             console.log("stickUp.js: Error: topPadding argument incorrect, ignored. Valid values are 'auto', #, or #px");
-                menuSize = $('.'+itemClass).size();
-            }
-            //$(this).find('*').removeClass(itemHover);
-        }
-        $(document).on('scroll', function() {
-            varscroll = parseInt($(document).scrollTop());
-            if(menuSize != null){
-                for(var i=0;i < menuSize;i++)
-                {
-                    contentTop[i] = $('#'+content[i]+'').offset().top;
                         }
                     }
-                    if(scrollDir == 'down' && varscroll > contentTop[i]-50 && varscroll < contentTop[i]+50) {
-                        $('.'+itemClass).removeClass(itemHover);
-                        $('.'+itemClass+':eq('+i+')').addClass(itemHover);
+                }
                 if (options.topPaddingElement) {
                     topPaddingElement = options.topPaddingElement;
                     topPadding = topPaddingElement.height() + 5;
                 }
+            }
             stickyHeight = parseInt($(this).height(), 10);
             stickyMarginB = parseInt($(this).css('margin-bottom'), 10);
             currentMarginT = parseInt($(this).next().closest('div').css('margin-top'), 10);
@@ -99,6 +88,7 @@
                 "padding-top" : $('.stuckMenu').css('padding-top'),
                 "margin-top" : $('.stuckMenu').css('margin-top')
             };
+        };
         function bottomView(i, varscroll) {
             var contentView = $('#' + content[i]).height() * 0.4,
                 testView = contentTop[i] - contentView;
@@ -110,6 +100,15 @@
                 $('.' + itemClass + ':eq(0)').addClass(itemHover);
             }
         }
+        $(document).on('scroll', function () {
+            var varscroll = parseInt($(document).scrollTop(), 10),
+                i;
+            if (menuSize !== null) {
+                for (i = 0; i < menuSize; i++) {
+                    contentTop[i] = $('#' + content[i]).offset().top;
+                    if (scrollDir === 'down' && varscroll > contentTop[i] - 50 && varscroll < contentTop[i] + 50) {
+                        $('.' + itemClass).removeClass(itemHover);
+                        $('.' + itemClass + ':eq(' + i + ')').addClass(itemHover);
                     }
                     if (scrollDir === 'up') {
                         bottomView(i, varscroll);
