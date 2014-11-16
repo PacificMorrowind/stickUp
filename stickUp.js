@@ -117,19 +117,11 @@
                 }
             }
             if (vartop < varscroll + topMargin + topPadding) {
-
-
-
                 $('.stuckMenu').addClass('isStuck');
                 $('.stuckMenu').next().closest('div').css({
                     'margin-top': stickyHeight + stickyMarginB + currentMarginT + 'px'
                 }, 10);
-                $('.stuckMenu').css("position","fixed");
-                $('.isStuck').css({
-                    top: '0px'
-                }, 10, function(){
-
-                });
+                $('.stuckMenu').css({"position": "fixed", "z-index": "99", "top": "0", 'padding-top': topPadding + 'px', 'margin-top': topMargin + 'px'});
             }
 
             if (varscroll + topMargin + topPadding < vartop) {
