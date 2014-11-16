@@ -40,21 +40,18 @@
                 if (options.itemHover) {
                     itemHover = options.itemHover;
                 }
-                if(options.topMargin != null) {
-                    if(options.topMargin == 'auto') {
-                        topMargin = parseInt($('.stuckMenu').css('margin-top'));
+                if (options.topMargin) {
+                    if (options.topMargin === 'auto') {
+                        topMargin = parseInt($('.stuckMenu').css('margin-top'), 10);
                     } else {
-                        if(isNaN(options.topMargin) && options.topMargin.search("px") > 0){
-                            topMargin = parseInt(options.topMargin.replace("px",""));
-                        } else if(!isNaN(parseInt(options.topMargin))) {
-                            topMargin = parseInt(options.topMargin);
+                        if (isNaN(options.topMargin) && options.topMargin.search("px") > 0) {
+                            topMargin = parseInt(options.topMargin.replace("px", ""), 10);
+                        } else if (!isNaN(parseInt(options.topMargin, 10))) {
+                            topMargin = parseInt(options.topMargin, 10);
                         } else {
-                            console.log("incorrect argument, ignored.");
-                            topMargin = 0;
+                            console.log("stickUp.js: Error: topMargin argument incorrect, ignored. Valid values are 'auto', #, or #px");
                         }
                     }
-                } else {
-                    topMargin = 0;
                 }
                 menuSize = $('.'+itemClass).size();
             }
