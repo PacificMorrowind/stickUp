@@ -53,6 +53,16 @@
                         }
                     }
                 }
+                if (options.topPadding) {
+                    if (options.topPadding === 'auto') {
+                        topPadding = parseInt($('.stuckMenu').css('padding-top'), 10);
+                    } else {
+                        if (isNaN(options.topPadding) && options.topPadding.search("px") > 0) {
+                            topPadding = parseInt(options.topPadding.replace("px", ""), 10);
+                        } else if (!isNaN(parseInt(options.topPadding, 10))) {
+                            topPadding = parseInt(options.topPadding, 10);
+                        } else {
+                            console.log("stickUp.js: Error: topPadding argument incorrect, ignored. Valid values are 'auto', #, or #px");
                 menuSize = $('.'+itemClass).size();
             }
             //$(this).find('*').removeClass(itemHover);
@@ -97,10 +107,10 @@
                     }
                 }
             }
+            if (vartop < varscroll + topMargin + topPadding) {
 
 
 
-            if(vartop < varscroll + topMargin){
                 $('.stuckMenu').addClass('isStuck');
                 $('.stuckMenu').next().closest('div').css({
                     'margin-top': stickyHeight + stickyMarginB + currentMarginT + 'px'
@@ -113,7 +123,7 @@
                 });
             }
 
-            if(varscroll + topMargin < vartop){
+            if (varscroll + topMargin + topPadding < vartop) {
                 $('.stuckMenu').removeClass('isStuck');
                 $('.stuckMenu').next().closest('div').css({
                     'margin-top': currentMarginT + 'px'
